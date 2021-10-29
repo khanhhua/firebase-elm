@@ -35,24 +35,33 @@ type alias FirebaseApp msg =
     , firebaseOutput : Value -> Cmd msg
     , configs : Dict String String
     , toMsg : FirebaseMsg msg -> msg
+    , model : Model msg
     }
 
 firebaseApp : ((Value -> msg) -> Sub msg) -> (Value -> Cmd msg) -> (FirebaseMsg msg -> msg) -> FirebaseApp msg
 firebaseApp firebaseInput firebaseOutput toMsg =
-    { firebaseInput = firebaseInput 
+    { firebaseInput = firebaseInput
     , firebaseOutput = firebaseOutput
-    , configs = Dict.empty
     , toMsg = toMsg
+    , configs = Dict.empty
+    , model =
+        { returns = []
+        , subscriptions = []
+        }
     }
 
+
+init : FirebaseApp msg -> Model msg
+init app =
+    app.model
 {-
 Typical use is:
 
   init firebaseInput firebaseOutput
   |> config
-        [ ( "apiKey", "AI?????8" ),
-        , ( "authDomain", "yoursubdomain.firebaseapp.com" ),
-        , ( "databaseURL", "https://yoursubdomain.europe-west1.firebasedatabase.app" ),
+        [ ( "apiKey", "AI?????8" )
+        , ( "authDomain", "yoursubdomain.firebaseapp.com" )
+        , ( "databaseURL", "https://yoursubdomain.europe-west1.firebasedatabase.app" )
         , ( "projectId", "YourProjectId" )
         , ( "storageBucket", "yoursubdomain.appspot.com" )
         , ( "messagingSenderId", "YOUR_MESSAGE_ID" )

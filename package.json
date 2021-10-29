@@ -1,0 +1,46 @@
+{
+  "name": "firebase-elm",
+  "version": "0.1.0",
+  "description": "Firebase-Elm dynamic binding",
+  "main": "webpack.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "webpack",
+    "build:prod": "rimraf dist && webpack --config webpack.config.prod.js",
+    "watch": "webpack --watch",
+    "start": "webpack serve --port 8000",
+    "test": "elm-test tests/TestLogic.elm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khanhhua/firebase-elm"
+  },
+  "keywords": [
+    "elm",
+    "tictactoe"
+  ],
+  "author": "Khanh Hua",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/khanhhua/firebase-elm/issues"
+  },
+  "homepage": "https://github.com/khanhhua/firebase-elm#readme",
+  "dependencies": {
+    "css-loader": "^5.2.2",
+    "elm": "^0.19.1-5",
+    "elm-webpack-loader": "^8.0.0",
+    "firebase": "^8.6.0",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.1",
+    "rimraf": "^3.0.2",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "devDependencies": {
+    "elm-test": "^0.19.1-revision7"
+  }
+}
